@@ -4,4 +4,4 @@ npm install @expo/vector-icons --force
 
 npx expo install expo-font @expo-google-fonts/inter
 
-
+npm instal react-native-currency-input  
