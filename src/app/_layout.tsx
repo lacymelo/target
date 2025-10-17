@@ -8,6 +8,9 @@ import {
   Inter_500Medium,
   Inter_700Bold
 } from "@expo-google-fonts/inter"
+import { SQLiteProvider } from "expo-sqlite";
+import { migrate } from "@/database/migrate";
+import { Suspense } from "react";
 
 export default function Layout() {
   const [fontsLoaded] = useFonts({
@@ -35,14 +38,22 @@ export default function Layout() {
     //     }}
     //   />
     // </Tabs>
-    <Stack
-      screenOptions={{
-        headerShown: false,
-        contentStyle: {
-          backgroundColor: colors.white
-        }
-      }}
-    />
+    <Suspense fallback={<Loading />}>
+      <SQLiteProvider
+        databaseName="target.db"
+        onInit={migrate}
+        useSuspense
+      >
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            contentStyle: {
+              backgroundColor: colors.white
+            }
+          }}
+        />
+      </SQLiteProvider>
+    </Suspense>
   )
 
 }
