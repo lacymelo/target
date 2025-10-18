@@ -3,7 +3,7 @@ import { styles } from "./styles"
 import { MaterialIcons } from "@expo/vector-icons"
 
 export type TargetProps = {
-  id?: string
+  id: string
   name: string
   percentage: string
   current: string
@@ -21,7 +21,7 @@ export function Target({ data, ...rest }: Props) {
         <Text style={styles.name} numberOfLines={1}>{data.name}</Text>
 
         <Text style={styles.status}>
-          {data.percentage} • {data.current} {data.target}
+          {data.percentage} • {data.current} de {data.target}
         </Text>
       </View>
 
